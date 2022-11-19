@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Доступные кофе</string>
+   <string>Доступные нам сорта кофе</string>
   </property>
   <property name="styleSheet">
    <string notr="true">* {
@@ -86,6 +86,30 @@ QPushButton:pressed { background-color: #88596E }</string>
         </property>
         <property name="text">
          <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addButton">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Add entry</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editButton">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Edit entry</string>
         </property>
        </widget>
       </item>
