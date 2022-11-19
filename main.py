@@ -8,13 +8,16 @@ from PyQt5.QtGui import QColor, QPainter
 from PyQt5.QtWidgets import (QApplication, QDialog, QDialogButtonBox, QLabel,
                              QTableWidgetItem, QVBoxLayout, QWidget)
 
+from os.path import join
+from UI.addEditCoffeeForm_UI import Ui_Form as editUI
+from UI.main_UI import Ui_Form as mainUI
 
-class EntryEditWindow(QWidget):
+class EntryEditWindow(QWidget, editUI):
     entryChanged = pyqtSignal()
 
     def __init__(self, *args, mode='edit', maxId=10, **kwargs):
         super().__init__(*args, **kwargs)
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
         self.mode = mode
         self.closeButton.clicked.connect(self.close)
         self.submitButton.clicked.connect(self.onSubmit)
@@ -31,7 +34,7 @@ class EntryEditWindow(QWidget):
             self.onIdChange(1)
 
     def onIdChange(self, entryId):
-        db = sqlite3.connect('coffee.db')
+        db = sqlite3.connect(join('data', 'coffee.db'))
         cursor = db.cursor()
 
         _, grade, degree, coffeeType, desc, price, volume = cursor.execute(
@@ -44,7 +47,7 @@ class EntryEditWindow(QWidget):
         self.volumeBox.setValue(volume)
 
     def loadCheckboxes(self):
-        db = sqlite3.connect('coffee.db')
+        db = sqlite3.connect(join('data', 'coffee.db'))
         grades = db.cursor().execute('SELECT grade FROM grades').fetchall()
         degrees = db.cursor().execute('SELECT degree FROM degrees').fetchall()
         types = db.cursor().execute('SELECT type FROM types').fetchall()
@@ -75,7 +78,7 @@ class EntryEditWindow(QWidget):
             """
             queryData.append(entryId)
 
-        db = sqlite3.connect('coffee.db')
+        db = sqlite3.connect(join('data', 'coffee.db'))
         cursor = db.cursor()
         cursor.execute(query, queryData)
         db.commit()
@@ -100,10 +103,10 @@ class CustomDialog(QDialog):
         self.setLayout(self.layout)
 
 
-class Window(QWidget):
+class Window(QWidget, mainUI):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
         self.clearButton.clicked.connect(self.onClear)
         self.refreshButton.clicked.connect(self.onRefresh)
         self.addButton.clicked.connect(self.onAdd)
@@ -150,7 +153,7 @@ class Window(QWidget):
         self.tableWidget.adjustSize()
 
     def getDBInfo(self):
-        db = sqlite3.connect('coffee.db')
+        db = sqlite3.connect(join('data', 'coffee.db'))
         cursor = db.cursor()
         return cursor.execute('SELECT * FROM info').fetchall()
 
