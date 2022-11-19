@@ -5,24 +5,18 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtCore import QRect, QSize, QPoint
 from PyQt5.QtGui import QPainter, QColor
 from PyQt5 import uic
+from UI import Ui_Form
 
 MIN_RADIUS = 40
 MAX_RADIUS = 60
-COLORS = [  # Yellow color variants
-    QColor(255, 211, 13),
-    QColor(206, 161, 13),
-    QColor(206, 123, 13),
-    QColor(206, 87, 13),
-    QColor(206, 87, 56)
-]
 
 
-class Window(QWidget):
+class Window(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
+        self.setupUi(self)
         self.toDraw = False
         self.circles = list()
-        uic.loadUi('UI.ui', self)
         self.drawButton.clicked.connect(self.onClick)
 
     def onClick(self):
@@ -38,9 +32,15 @@ class Window(QWidget):
         Circle.setSize(QSize(radius, radius))
         Circle.moveCenter(QPoint(randX, randY))
 
-        Color = random.choice(COLORS)
+        Color = self.getRandomColor()
         self.circles.append((Circle, Color))
         self.paint()
+
+    def getRandomColor(self):
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        return QColor(r, g, b)
 
     def paintCircles(self, qp: QPainter):
         for circle, color in self.circles:
