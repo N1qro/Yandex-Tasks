@@ -1,0 +1,15 @@
+{% extends "resulttemplate.html" %}
+
+{% block results %}
+
+    {% if passed %}
+        <h3 class="alert alert-success" role="alert">Поздравляем! Ваш рейтинг после {{ level }} этапа отбора:</h3>
+        <h3>Составляет {{ rating }} баллов!</h3>
+        <h3 class="alert alert-warning" role="alert">Желаем удачи!</h3>
+    {% else %}
+        <h3 class="alert alert-danger" role="alert">К сожалению в {{ level }} этапе отбора вы не прошли. Ваш рейтинг:</h3>
+        <h3>Составляет {{ rating }} баллов.</h3>
+        <h3 class="alert alert-warning" role="alert">Будем рады видеть вас в {{ next_selection }} отборе.</h3>
+    {% endif %}
+
+{% endblock %}
