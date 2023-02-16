@@ -1,0 +1,43 @@
+h1.lbl, h2.lbl {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+input.big-input {
+    width: 100%;
+}
+
+p {
+    font-size: large;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: blue;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+form {
+    margin-top: 20px;
+    width: 400px;
+    padding: 1%;
+    border: 5px solid green;
+    border-radius: 20px;
+    color:lightgoldenrodyellow;
+    font-size: large;
+    background-color:darkslateblue;
+}

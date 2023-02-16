@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <title>Отбор астронавтов</title>
+</head>
+<body>
+    <h1 class="lbl">Анкета претендента</h1>
+    <h2 class="lbl">На участие в миссии</h2>
+    <div class="container">
+        <form>
+            <div id="main_info">
+                <input type="text" placeholder="Введите фамилию" id="name" class="big-input"><br>
+                <input type="text" placeholder="Введите имя" id="surname" class="big-input"><br>
+                <input type="email" placeholder="Введите адрес электронной почты" id="email" class="big-input"><br>
+            </div>
+            <div id="education">
+                <p>Какое у вас образование?</p>
+                <select name="optionlist">
+                    <option>Начальное</option>
+                    <option>Среднее</option>
+                    <option>Высшее</option>
+                    <option>Самоучка лол</option>
+                </select>
+            </div>
+            <div id="profession">
+                <p>Какие у вас есть профессии?</p>
+                <input type="radio" name="profession" value="eng_researcher" id="choice1">
+                <label for="choice1">Инженер-исследователь</label><br>
+                <input type="radio" name="profession" value="eng_builder" id="choice2">
+                <label for="choice2">Инженер-строитель</label><br>
+                <input type="radio" name="profession" value="pilot" id="choice3">
+                <label for="choice3">Пилот</label><br>
+                <input type="radio" name="profession" value="weatherman" id="choice4">
+                <label for="choice4">Метеоролог</label><br>
+                <input type="radio" name="profession" value="eng_lifesupporter" id="choice5">
+                <label for="choice5">Инженер по жизнеобеспечению</label><br>
+                <input type="radio" name="profession" value="eng_antirad" id="choice6">
+                <label for="choice6">Инженер по радиационной защите</label><br>
+                <input type="radio" name="profession" value="doctor" id="choice7">
+                <label for="choice7">Врач</label><br>
+                <input type="radio" name="profession" value="biology_guy" id="choice8">
+                <label for="choice8">Экзобиолог</label><br>
+            </div>
+            <div id="gender">
+                <p>Укажите пол</p>
+                <input type="radio" name="gender" id="radio_male" value="male">
+                <label for="radio_male">Мужской</label><br>
+                <input type="radio" name="gender" id="radio_female" value="female">
+                <label for="radio_female">Женский</label><br>
+            </div>
+            <div>
+                <p>Почему вы хотите принять участие в миссии</p>
+                <input type="text" class="big-input"><br>
+            </div>
+            <div>
+                <p>Приложите фотографию</p>
+                <input type="file" id="file_input"><br><br>
+                <input type="checkbox" id="is_committing">
+                <label for="is_committing">Готовы остаться на марсе</label><br><br>
+                <button type="submit">Отправить</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
