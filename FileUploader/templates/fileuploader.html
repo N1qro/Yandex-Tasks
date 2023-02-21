@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,17 @@
     <title>Загрузка файла</title>
 </head>
 <body>
-    <h1>Решение</h1>
+    <div class="position-absolute start-50 translate-middle-x bg-primary text-white pb-4">
+        <h1 class="text-center">Загрузка фотографии</h1>
+        <h3 class="text-center">для участия в миссии</h3>
+        <form method="post" action="/load_photo" enctype="multipart/form-data">
+            <p class="mt-3">Приложите фотографию</p>
+            <input type="file" name="file" class="form-control" autocomplete="off" required>
+            <input type="submit" value="Отправить" class="btn btn-info mt-3 text-white">
+        </form>
+        {% if filename %}
+            <img src="{{ filename }}"  width="100%" alt="Uploaded image">
+        {% endif %}
+    </div>
 </body>
 </html>
