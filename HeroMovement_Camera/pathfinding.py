@@ -12,7 +12,9 @@ def find_free_place(game_map):
 
 
 def is_move_valid(x, y, layout):
-    try:
-        return layout[x][y] == 0
-    except IndexError:
-        return False
+    if 0 <= x <= 9 and 0 <= y <= 9:
+        try:
+            return layout[x][y] == 0
+        except IndexError:
+            return False
+    return False
