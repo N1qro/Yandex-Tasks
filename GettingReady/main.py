@@ -3,18 +3,10 @@ app = Flask(__name__)
 
 
 @app.route("/index/<string:title>")
-def index(title):
-    return render_template("base.html", title=title)
-
-
 @app.route("/<string:title>")
-def index2(title):
-    return render_template("base.html", title=title)
-
-
 @app.route("/")
-def index3():
-    return render_template("base.html")
+def index(title=None):
+    return render_template("base.html", title=title)
 
 
 if __name__ == "__main__":
