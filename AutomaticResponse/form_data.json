@@ -1,0 +1,23 @@
+{
+    "answers": {
+        "title": "Анкета",
+        "surname": "Watny",
+        "name": "Mark",
+        "education": "выше среднего",
+        "profession": "штурман марсохода",
+        "sex": "male",
+        "motivation": "Всегда мечтал застрять на Марсе!",
+        "ready": true
+    },
+
+    "scheme": {
+        "title": "Заголовок",
+        "surname": "Фамилия",
+        "name": "Имя",
+        "education": "Образование",
+        "profession": "Профессия",
+        "sex": "Пол",
+        "motivation": "Мотивация",
+        "ready": "Готовы остаться на марсе?"
+    }
+}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ data["title"] }}{% endblock %}
+
+{% block content %}
+    <div class="custom-form-data">
+        <h4>{{ scheme["surname"] }}: {{ data["surname"] }}</h4>
+        <h4>{{ scheme["name"] }}: {{ data["name"] }}</h4>
+        <h4>{{ scheme["education"] }}: {{ data["education"] }}</h4>
+        <h4>{{ scheme["profession"] }}: {{ data["profession"] }}</h4>
+        <h4>{{ scheme["sex"] }}: {{ data["sex"] }}</h4>
+        <h4>{{ scheme["motivation"] }}: {{ data["motivation"] }}</h4>
+        <h4>{{ scheme["ready"] }}: {{ data["ready"] }}</h4>
+    </div>
+{% endblock %}
