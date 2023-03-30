@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container w-50">
+        <h3 class="text-center">Оформление каюты</h3>
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Цвет стен</th>
+                    <th scope="col">Эмблема</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-card" style="background-color: hsl({{ hue }}, {% if sex=="female" %}100%{% else %}50%{% endif %}, 50%) !important"></td>
+                    <td class="table-card">
+                        {% if age < 21 %}
+                            <img src="{{ url_for("static", filename="img/little.jfif") }}" width="100%">
+                        {% else %}
+                            <img src="{{ url_for("static", filename="img/adult.jpg") }}" width="100%">
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
