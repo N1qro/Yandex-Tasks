@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container w-75">
+        <h2 class="ps-3 {% if not data %}text-center{% endif %}">Размещение по каютам</h2>
+        {% if data %}
+        {% for name in data %}
+            <h5>{{name}} - Каюта №{{ loop.index }}{% if loop.first %} - Капитан корабля {% endif %}</h5>
+        {% endfor %}
+        {% else %}
+            <div class="alert alert-danger", role="alert">
+                <h3 class="text-center">Данные не были переданы</h3>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
