@@ -1,0 +1,8 @@
+.emblem-holder {
+    overflow: hidden;
+}
+
+.emblem {
+    float: left;
+    margin-right: 20px;
+}
