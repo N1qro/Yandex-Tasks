@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    {% if current_user.is_authenticated %}
+        <div class="d-flex justify-content-center">
+            <h2 class="text-center mt-5">Works log</h2>
+            <a href="{{ url_for('workappender') }}" class="btn btn-secondary h-25 mt-auto mb-1 ms-2">Добавить работу</a>
+        </div>
+        {% if data %}
+            {% for job, user in data %}
+                <div class="container">
+                    {% if current_user.id == 1 or user.id == current_user.id %}
+                        <a href="/edit/{{ job.id }}" class="btn btn-warning">Редактировать работу</a>
+                        <a href="/delete/{{ job.id }}" class="btn btn-danger">Удалить работу</a>
+                    {% endif %}
+                    <h3>Action {{ loop.index }}</h3>
+                    <table class="table">
+                        <thead>
+                        <tr class="table-dark">
+                            <th scope="col">Title of activity</th>
+                            <th scope="col">Team leader</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">List of collaborators</th>
+                            <th scope="col">Is finished</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ job.job }}</td>
+                            <td>{{ user.name }} {{ user.surname }}</td>
+                            <td>{{ job.work_size }}</td>
+                            <td>{% if job.collaborators %}{{ job.collaborators }}{% else %}Solo{% endif %}</td>
+                            <td>Is {% if job.is_finished == 0 %}not{% endif %} finished</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h3 class="text-center text-success">Работы нет! =)</h3>
+        {% endif %}
+    {% else %}
+        <h2 class="text-center mt-5">Вы не авторизированы</h2>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-success mx-1" href="{{ url_for('register') }}">Зарегиструйтесь</a>
+            <a class="btn btn-success mx-1" href="{{ url_for('login') }}">Авторизуйтесь</a>
+        </div>
+    {% endif %}
+{% endblock %}

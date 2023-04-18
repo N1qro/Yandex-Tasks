@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Новая работа{% endblock title %}
+
+{% block content %}
+    <h1 class="text-center mt-5">{{ header }}</h1>
+
+    <div class="container w-50">
+        {% if error %}
+            <div class="alert alert-danger mt-5">
+                <h3 class="text-center">{{ error }}</h3>
+            </div>
+        {% endif %}
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+
+            <p>
+                {{ form.job_name.label }}<br>
+                {{ form.job_name(class="form-control") }}<br>
+            </p>
+
+            <p>
+                {{ form.job_leader.label }}<br>
+                {{ form.job_leader(class="form-control") }}<br>
+            </p>
+
+            <p>
+                {{ form.work_hours.label }}<br>
+                {{ form.work_hours(class="form-control") }}<br>
+            </p>
+
+            <p>
+                {{ form.collaborators.label }}<br>
+                {{ form.collaborators(class="form-control") }}<br>
+            </p>
+
+            <h5 class="text-center">Формат времени: '2023-04-18 15:30:00'</h5>
+            <p class="mt-2">
+                {{ form.start_date.label }}<br>
+                {{ form.start_date(class="form-control") }}<br>
+            </p>
+
+            <p>
+                {{ form.finish_date.label }}<br>
+                {{ form.finish_date(class="form-control") }}<br>
+            </p>
+
+            <p>{{ form.work_finished() }} {{ form.work_finished.label }}</p>
+            <p>{{ form.submit(class="btn btn-primary", type="submit") }}</p>
+        </form>
+    </div>
+{% endblock content %}
